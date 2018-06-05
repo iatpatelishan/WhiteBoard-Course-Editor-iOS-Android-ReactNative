@@ -9,6 +9,7 @@ import ModuleList from './components/ModuleList'
 import LessonList from './components/LessonList'
 import TopicList from './components/TopicList'
 import WidgetList from './components/WidgetList'
+import AssignmentEditor from './components/AssignmentEditor'
 
 
 
@@ -41,7 +42,8 @@ const App = createStackNavigator({
     ModuleList,
     LessonList,
     TopicList,
-    WidgetList
-});
+    WidgetList,
+    AssignmentEditor
+},{initialRouteName:'WidgetList'});
 
 export default App;

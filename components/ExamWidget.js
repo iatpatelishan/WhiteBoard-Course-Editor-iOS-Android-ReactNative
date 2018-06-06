@@ -44,16 +44,40 @@ class AssignmentWidget extends Component {
     }
 
     render() {
-        let count=0;
+        var count=0;
         let name='';
         let list = this.state.questions.map(
             (question, index) => {
                 count++;
-                name='Question '+count+' : '+ question.questionType;
+
+
+                let questionTypeText = ''
+                let route='Home';
+                let questionIcon='list-ul';
+                if(question.questionType=='Essay'){
+                    questionTypeText='Essay';
+                    route='EssayQuestionWidget';
+                    questionIcon='paragraph';
+                } else if(question.questionType=='Blanks'){
+                    questionTypeText='Fill In The Blanks';
+                    route='FillInTheBlanksQuestionWidget';
+                    questionIcon='check';
+                } else if(question.questionType=='Choice'){
+                    questionTypeText='Multiple Choice';
+                    route='MultipleChoiceQuestionWidget';
+                    questionIcon='list-ul';
+                } else if(question.questionType=='TrueFalse') {
+                    questionTypeText='True or False';
+                    route='TrueOrFalseQuestionWidget';
+                    questionIcon='check-circle';
+                }
+
+                name='Question '+count+' : '+ questionTypeText;
 
                 return (<ListItem
+                    leftIcon={<Icon name={questionIcon} style={styles.questionIcon} />}
                     onPress={() => this.props.navigation
-                        .navigate("AssignmentWidget", {questionId: question.id, questionNo:count})}
+                        .navigate(route, {questionId: question.id, questionNo:[...count]})}
                     key={index}
                     title={name}
                     />);
@@ -97,7 +121,9 @@ class AssignmentWidget extends Component {
 }
 
 const styles = StyleSheet.create({
-
+    questionIcon: {
+        marginRight: 10,
+    }
 });
 
 export default AssignmentWidget

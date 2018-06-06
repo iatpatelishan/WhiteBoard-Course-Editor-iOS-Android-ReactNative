@@ -73,11 +73,12 @@ class AssignmentWidget extends Component {
                 }
 
                 name='Question '+count+' : '+ questionTypeText;
+                let currentcount=count;
 
                 return (<ListItem
                     leftIcon={<Icon name={questionIcon} style={styles.questionIcon} />}
                     onPress={() => this.props.navigation
-                        .navigate(route, {questionId: question.id, questionNo:[...count]})}
+                        .navigate(route, {questionId: question.id, questionNo:currentcount})}
                     key={index}
                     title={name}
                     />);

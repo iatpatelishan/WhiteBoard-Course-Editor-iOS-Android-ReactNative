@@ -118,10 +118,25 @@ class EssayQuestionWidget extends Component {
                     <Text h3>{this.state.title}</Text>
                     <Text>{this.state.instructions} </Text>
 
-                    <TextInput
+                    <TextInput style={styles.box}
                         multiline={true}
-                        numberOfLines={4}
+                        numberOfLines={5}
                         placeholder="Student would enter answer here"/>
+
+                    <View style={styles.container}>
+                        <Button style={styles.button}
+                                backgroundColor="red"
+                                color="white"
+                                title="Cancel"
+                                onPress={() => {this.updateQuestion(); this.props.navigation.goBack()}}/>
+
+                        <Button style={styles.button}
+                                backgroundColor="blue"
+                                color="white"
+                                title="Submit"
+                                onPress={() => this.props.navigation.goBack()} />
+
+                    </View>
 
                 </Card>
 
@@ -131,6 +146,22 @@ class EssayQuestionWidget extends Component {
 }
 
 const styles = StyleSheet.create({
+    box: {
+        borderWidth: 1,
+        borderRadius: 4,
+        marginTop: 10,
+        borderColor: '#cacbce'
+    },
+    container: {
+        paddingTop:20,
+        flex: 1,
+        flexDirection: 'row'
+    },
+    button: {
+        flex: 1,
+        marginTop: 15,
+        backgroundColor: 'green',
+    }
 
 });
 

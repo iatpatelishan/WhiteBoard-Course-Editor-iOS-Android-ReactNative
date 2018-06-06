@@ -26,18 +26,22 @@ class ExamService {
     }
 
     createQuestion(examId, questionType){
-        let newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType};
+        let newWidget;
         let apiUrl;
         if(questionType=='Essay'){
+            newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};
             apiUrl=EXAM_ESSAY_API_URL;
         }
         if(questionType=='Blanks'){
+            newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};
             apiUrl=EXAM_CHOICE_API_URL;
         }
         if(questionType=='Choice'){
+            newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};
             apiUrl=EXAM_BLANKS_API_URL;
         }
         if(questionType=='TrueFalse'){
+            newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};
             apiUrl=EXAM_TRUEFALSE_API_URL;
         }
         return fetch(apiUrl.replace('EID', examId), {

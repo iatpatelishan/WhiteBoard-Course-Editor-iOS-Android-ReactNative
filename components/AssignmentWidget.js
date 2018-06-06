@@ -2,11 +2,10 @@ import React, {Component} from 'react'
 import {View, ScrollView, Alert, TextInput, StyleSheet} from 'react-native'
 import {Text, Button, Divider} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
-import WidgetService from "../services/WidgetService";
 import AssignmentService from "../services/AssignmentService";
 
 
-class AssignmentEditor extends Component {
+class AssignmentWidget extends Component {
     static navigationOptions = {title: 'Assignment Editor'}
 
     constructor(props) {
@@ -18,7 +17,6 @@ class AssignmentEditor extends Component {
             description: '',
             points: 0,
         }
-        this.widgetService = WidgetService.instance;
         this.assignmentService = AssignmentService.instance;
         this.updateForm = this.updateForm.bind(this);
         this.fetchAssignment = this.fetchAssignment.bind(this);
@@ -65,6 +63,7 @@ class AssignmentEditor extends Component {
         return (
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 15, paddingRight: 15}}>
 
+                <Text>{this.state.assignmentId}</Text>
                 <FormLabel>Assignment Name</FormLabel>
                 <FormInput style={styles.textInput} value={this.state.name} onChangeText={
                     text => this.updateForm({name: text})
@@ -161,4 +160,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AssignmentEditor
+export default AssignmentWidget

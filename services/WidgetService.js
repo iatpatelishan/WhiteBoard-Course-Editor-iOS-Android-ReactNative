@@ -26,7 +26,7 @@ class WidgetService {
     }
 
     createWidget(topicId, widgetType){
-        let newWidget = {'id':'99999','name':'New Widget', 'text':'Widget','widgetType':widgetType}
+        let newWidget = {'id':'99999','name':'New Widget', 'text':'Widget','widgetType':widgetType,'points':0}
         let apiUrl;
         if(widgetType=='Assignment'){
             apiUrl=TOPIC_ASSIGNMENT_WIDGET_CREATE_API_URL;

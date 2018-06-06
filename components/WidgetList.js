@@ -14,7 +14,6 @@ class WidgetList extends Component {
         super(props)
         this.state = {
             widgetModal: false,
-            widgetType: 'Assignment',
             widgets: [],
             courseId: 1,
             moduleId: 1,
@@ -94,7 +93,7 @@ class WidgetList extends Component {
                         (widget, index) => {
                             return (<ListItem
                                 onPress={() => this.props.navigation
-                                    .navigate("AssignmentEditor", {assignmentId: widget.id})}
+                                    .navigate("AssignmentWidget", {assignmentId: widget.id})}
                                 key={index}
                                 subtitle={widget.description}
                                 title={widget.name}/>);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, ScrollView, Alert, TextInput, StyleSheet} from 'react-native'
-import {Text, Button, Divider} from 'react-native-elements'
+import {Card, Text, Button, Divider} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 import AssignmentService from "../services/AssignmentService";
 
@@ -47,11 +47,11 @@ class AssignmentWidget extends Component {
         this.assignmentService.updateAssignment(
             this.state.assignmentId,
             {
-                'id':this.state.assignmentId,
-                'name':this.state.name,
-                'title':this.state.title,
-                'description':this.state.description,
-                'points':this.state.points
+                'id': this.state.assignmentId,
+                'name': this.state.name,
+                'title': this.state.title,
+                'description': this.state.description,
+                'points': this.state.points
             })
     }
 
@@ -61,79 +61,81 @@ class AssignmentWidget extends Component {
 
     render() {
         return (
-            <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 15, paddingRight: 15}}>
+            <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 5, paddingRight: 5}}>
 
-                <Text>{this.state.assignmentId}</Text>
-                <FormLabel>Assignment Name</FormLabel>
-                <FormInput style={styles.textInput} value={this.state.name} onChangeText={
-                    text => this.updateForm({name: text})
-                }/>
-                <FormValidationMessage>
-                    Assignment Name is required
-                </FormValidationMessage>
+                <Card>
+                    <FormLabel>Assignment Name</FormLabel>
+                    <FormInput style={styles.textInput} value={this.state.name} onChangeText={
+                        text => this.updateForm({name: text})
+                    }/>
+                    <FormValidationMessage>
+                        Assignment Name is required
+                    </FormValidationMessage>
 
-                <FormLabel>Title</FormLabel>
-                <FormInput style={styles.textInput} value={this.state.title} onChangeText={
-                    text => this.updateForm({title: text})
-                }/>
-                <FormValidationMessage>
-                    Title is required
-                </FormValidationMessage>
+                    <FormLabel>Title</FormLabel>
+                    <FormInput style={styles.textInput} value={this.state.title} onChangeText={
+                        text => this.updateForm({title: text})
+                    }/>
+                    <FormValidationMessage>
+                        Title is required
+                    </FormValidationMessage>
 
-                <FormLabel>Description</FormLabel>
-                <FormInput style={styles.textInput} value={this.state.description} onChangeText={
-                    text => this.updateForm({description: text})
-                }/>
-                <FormValidationMessage>
-                    Description is required
-                </FormValidationMessage>
+                    <FormLabel>Description</FormLabel>
+                    <FormInput style={styles.textInput} value={this.state.description} onChangeText={
+                        text => this.updateForm({description: text})
+                    }/>
+                    <FormValidationMessage>
+                        Description is required
+                    </FormValidationMessage>
 
-                <FormLabel>Points</FormLabel>
-                <FormInput style={styles.textInput} value={String(this.state.points)} onChangeText={
-                    text => this.updateForm({points: text})
-                }/>
-                <FormValidationMessage>
-                    Points is required
-                </FormValidationMessage>
+                    <FormLabel>Points</FormLabel>
+                    <FormInput style={styles.textInput} value={String(this.state.points)} onChangeText={
+                        text => this.updateForm({points: text})
+                    }/>
+                    <FormValidationMessage>
+                        Points is required
+                    </FormValidationMessage>
 
-                <Button backgroundColor="green"
-                        color="white"
-                        title="Save"
-                onPress={() => this.updateAssignment()}/>
+                    <Button backgroundColor="green"
+                            color="white"
+                            title="Save"
+                            onPress={() => this.updateAssignment()}/>
 
-                <Button backgroundColor="red"
-                        color="white"
-                        title="Cancel" onPress={() => this.props.navigation.goBack()}/>
+                    <Button backgroundColor="red"
+                            color="white"
+                            title="Cancel" onPress={() => this.props.navigation.goBack()}/>
+                </Card>
 
-                <Divider style={{backgroundColor: '#7a8291', marginTop: 20, marginBottom: 20}}/>
+                <Divider style={{backgroundColor: '#7a8291', marginTop: 20}}/>
 
-                <Text h1>Preview</Text>
+                <Card title="Preview">
 
-                <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
-                    <Text h3 style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        justifyContent: 'flex-start',
-                    }}>Assignment - {this.state.title}</Text>
-                    <Text h3 style={{
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
-                        marginLeft: 10
-                    }}>{this.state.points}</Text>
-                </View>
-                <Text>{this.state.description} </Text>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
+                        <Text h3 style={{
+                            flex: 1,
+                            flexDirection: 'row',
+                            justifyContent: 'flex-start',
+                        }}>{this.state.title}</Text>
+                        <Text h3 style={{
+                            flexDirection: 'row',
+                            justifyContent: 'flex-end',
+                            marginLeft: 10
+                        }}>{this.state.points}pts</Text>
+                    </View>
+                    <Text>{this.state.description} </Text>
 
-                <Text style={styles.essayAnswer} h4>Essay Answer </Text>
-                <TextInput
-                    multiline={true}
-                    numberOfLines={4}
-                    placeholder="Student would enter answer here"/>
+                    <Text style={styles.essayAnswer} h4>Essay Answer </Text>
+                    <TextInput
+                        multiline={true}
+                        numberOfLines={4}
+                        placeholder="Student would enter answer here"/>
 
-                <Text style={styles.uploadFile} h4>Upload a file </Text>
+                    <Text style={styles.uploadFile} h4>Upload a file </Text>
 
 
-                <Text style={styles.uploadLink} h4>Submit a Link </Text>
-                <FormInput style={styles.textInput} placeholder="Student would submit link here" />
+                    <Text style={styles.uploadLink} h4>Submit a Link </Text>
+                    <FormInput style={styles.textInput} placeholder="Student would submit link here"/>
+                </Card>
 
             </ScrollView>
         )

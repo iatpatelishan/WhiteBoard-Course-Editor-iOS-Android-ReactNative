@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {StyleSheet, Picker, ScrollView, View, Alert, TouchableOpacity} from 'react-native'
 import {Text, ListItem, Button, Divider, FormLabel} from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Modal from "react-native-modal";
 import WidgetService from '../services/WidgetService';
 import ActionButton from 'react-native-action-button';
 

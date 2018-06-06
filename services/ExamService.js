@@ -1,9 +1,9 @@
 let _singleton;
-const EXAM_API_URL = 'http://192.168.0.13:8080/api/exam/EID/question';
-const EXAM_ESSAY_API_URL = 'http://192.168.0.13:8080/api/exam/EID/essay';
-const EXAM_CHOICE_API_URL = 'http://192.168.0.13:8080/api/exam/EID/choice';
-const EXAM_BLANKS_API_URL = 'http://192.168.0.13:8080/api/exam/EID/blanks';
-const EXAM_TRUEFALSE_API_URL = 'http://192.168.0.13:8080/api/exam/EID/truefalse';
+const EXAM_API_URL = 'http://192.168.43.172:8080/api/exam/EID/question';
+const EXAM_ESSAY_API_URL = 'http://192.168.43.172:8080/api/exam/EID/essay';
+const EXAM_CHOICE_API_URL = 'http://192.168.43.172:8080/api/exam/EID/choice';
+const EXAM_BLANKS_API_URL = 'http://192.168.43.172:8080/api/exam/EID/blanks';
+const EXAM_TRUEFALSE_API_URL = 'http://192.168.43.172:8080/api/exam/EID/truefalse';
 
 class ExamService {
     constructor(singletonToken) {
@@ -34,11 +34,11 @@ class ExamService {
         }
         if(questionType=='Blanks'){
             newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};
-            apiUrl=EXAM_CHOICE_API_URL;
+            apiUrl=EXAM_BLANKS_API_URL;
         }
         if(questionType=='Choice'){
-            newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};
-            apiUrl=EXAM_BLANKS_API_URL;
+            newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0, 'options':'Option 1','Option 1':''};
+            apiUrl=EXAM_CHOICE_API_URL;
         }
         if(questionType=='TrueFalse'){
             newWidget = {'id':'99999','name':'New '+questionType, 'questionType':questionType, 'instructions':'', 'points':0};

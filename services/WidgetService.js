@@ -1,8 +1,8 @@
 let _singleton;
-const TOPIC_WIDGET_API_URL = 'http://192.168.0.13:8080/api/topic/TID/widget';
-const TOPIC_WIDGET_SAVE_API_URL = 'http://192.168.0.13:8080/api/topic/TID/savewidget';
-const TOPIC_ASSIGNMENT_WIDGET_CREATE_API_URL = 'http://192.168.0.13:8080/api/topic/TID/assignment';
-const TOPIC_EXAM_WIDGET_CREATE_API_URL = 'http://192.168.0.13:8080/api/topic/TID/exam';
+const TOPIC_WIDGET_API_URL = 'http://192.168.43.172:8080/api/topic/TID/widget';
+const TOPIC_WIDGET_SAVE_API_URL = 'http://192.168.43.172:8080/api/topic/TID/savewidget';
+const TOPIC_ASSIGNMENT_WIDGET_CREATE_API_URL = 'http://192.168.43.172:8080/api/topic/TID/assignment';
+const TOPIC_EXAM_WIDGET_CREATE_API_URL = 'http://192.168.43.172:8080/api/topic/TID/exam';
 
 
 class WidgetService {

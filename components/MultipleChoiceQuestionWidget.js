@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
-import {View, ScrollView, Alert, TextInput, StyleSheet} from 'react-native'
-import {Card, Text, Button, Divider} from 'react-native-elements'
+import {Picker, View, ScrollView, Alert, TextInput, StyleSheet} from 'react-native'
+import {Card, ListItem, Text, Button, Divider} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
-import EssayQuestionWidgetService from "../services/EssayQuestionWidgetService";
+import MultipleChoiceQuestionWidgetService from "../services/MultipleChoiceQuestionWidgetService";
+import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button';
 
 
-class EssayQuestionWidget extends Component {
+class MultipleChoiceQuestionWidget extends Component {
     static navigationOptions = {
-        title: 'Essay Question Editor'
+        title: 'Multiple Choice Editor'
     }
 
     constructor(props) {
@@ -18,9 +19,11 @@ class EssayQuestionWidget extends Component {
             title: '',
             description: '',
             points:0,
-            instructions:''
+            instructions:'',
+            options:'',
+            answer:''
         }
-        this.essayQuestionWidgetService = EssayQuestionWidgetService.instance;
+        this.multipleChoiceQuestionWidgetService = MultipleChoiceQuestionWidgetService.instance;
         this.fetchQuestion = this.fetchQuestion.bind(this);
         this.updateForm = this.updateForm.bind(this);
         this.updateQuestion = this.updateQuestion.bind(this);
@@ -34,27 +37,31 @@ class EssayQuestionWidget extends Component {
     }
 
     fetchQuestion() {
-        this.essayQuestionWidgetService.findQuestionById(this.state.questionId)
+        this.multipleChoiceQuestionWidgetService.findQuestionById(this.state.questionId)
             .then((question) => {
                     this.setState({
                         title: question.title,
                         description: question.description,
                         points: question.points,
                         instructions: question.instructions,
+                        options: question.options,
+                        answer: question.answer,
                     })
                 }
             )
     }
 
     updateQuestion() {
-        this.essayQuestionWidgetService.updateQuestion(
+        this.multipleChoiceQuestionWidgetService.updateQuestion(
             this.state.questionId,
             {
                 'id': this.state.questionId,
                 'title': this.state.title,
                 'description': this.state.description,
                 'points': this.state.points,
-                'instructions': this.state.instructions
+                'instructions': this.state.instructions,
+                'options': this.state.options,
+                'answer': this.state.answer,
             })
     }
 
@@ -63,9 +70,13 @@ class EssayQuestionWidget extends Component {
     }
 
     render() {
+        let formList = this.state.options.split('\n')
+            .map((line,i) => { return (<Picker.Item key={i} label={line} value={line} />)});
+        let previewList = this.state.options.split('\n')
+            .map((line,i) => { return (<RadioButton key={i} value={i}><Text>{line}</Text></RadioButton>)});
+
         return (
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 5, paddingRight: 5}}>
-
                 <Card>
                     <FormLabel>Title</FormLabel>
                     <FormInput style={styles.textInput} value={this.state.title} onChangeText={
@@ -89,6 +100,31 @@ class EssayQuestionWidget extends Component {
                     }/>
                     <FormValidationMessage>
                         Instructions is required
+                    </FormValidationMessage>
+
+                    <FormLabel>Options</FormLabel>
+                    <TextInput style={styles.box}
+                               multiline={true}
+                               numberOfLines={5}
+                               placeholder="Enter one per line"
+                               value={String(this.state.options)}
+                               onChangeText={
+                                   text => this.updateForm({options: text})
+                               }
+                    />
+                    <FormValidationMessage>
+                        Choices are required. Enter one per line
+                    </FormValidationMessage>
+
+                    <FormLabel>Correct Choice</FormLabel>
+                    <Picker
+                        selectedValue={this.state.answer}
+                        onValueChange={(answer, itemIndex) => this.setState({answer: answer})}>
+                        {formList}
+
+                    </Picker>
+                    <FormValidationMessage>
+                        Correct choice is required!
                     </FormValidationMessage>
 
                     <Button backgroundColor="green"
@@ -118,10 +154,11 @@ class EssayQuestionWidget extends Component {
                     <Text h3>{this.state.title}</Text>
                     <Text>{this.state.instructions} </Text>
 
-                    <TextInput style={styles.box}
-                        multiline={true}
-                        numberOfLines={5}
-                        placeholder="Student would enter answer here"/>
+                    <Card>
+                        <RadioGroup>
+                        {previewList}
+                        </RadioGroup>
+                    </Card>
 
                     <View style={styles.container}>
                         <Button style={styles.button}
@@ -166,4 +203,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default EssayQuestionWidget
+export default MultipleChoiceQuestionWidget

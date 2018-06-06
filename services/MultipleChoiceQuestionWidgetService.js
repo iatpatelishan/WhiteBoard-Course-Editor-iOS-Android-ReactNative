@@ -1,7 +1,7 @@
 let _singleton;
-const ASSIGNMENT_API_URL = 'http://192.168.43.172:8080/api/assignment/AID';
+const CHOICE_QUESTION_WIDGET_API_URL = 'http://192.168.43.172:8080/api/question/choice/QID';
 
-class AssignmentService {
+class MultipleChoiceQuestionWidgetService {
     constructor(singletonToken) {
         if (_singleton !== singletonToken)
             throw new Error('Cannot instantiate directly.');
@@ -9,12 +9,12 @@ class AssignmentService {
 
     static get instance() {
         if (!this[_singleton])
-            this[_singleton] = new AssignmentService(_singleton);
+            this[_singleton] = new MultipleChoiceQuestionWidgetService(_singleton);
         return this[_singleton];
     }
 
-    findAssignmentById(assignmentId) {
-        return fetch(ASSIGNMENT_API_URL.replace('AID', assignmentId))
+    findQuestionById(questionId) {
+        return fetch(CHOICE_QUESTION_WIDGET_API_URL.replace('QID', questionId))
             .then(function (response) {
                 return response.json();
             })
@@ -24,17 +24,16 @@ class AssignmentService {
     }
 
 
-    updateAssignment(assignmentId, assignment) {
-        return fetch(ASSIGNMENT_API_URL.replace('AID', assignmentId), {
+    updateQuestion(questionId, question) {
+        return fetch(CHOICE_QUESTION_WIDGET_API_URL.replace('QID', questionId), {
             method: 'PUT',
-            body: JSON.stringify(assignment),
+            body: JSON.stringify(question),
             headers: {
                 'content-type': 'application/json'
             }
         });
     }
 
-
 }
 
-export default AssignmentService;
+export default MultipleChoiceQuestionWidgetService;

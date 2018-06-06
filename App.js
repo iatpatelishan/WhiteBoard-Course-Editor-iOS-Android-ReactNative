@@ -12,6 +12,7 @@ import WidgetList from './components/WidgetList'
 import AssignmentWidget from './components/AssignmentWidget'
 import ExamWidget from './components/ExamWidget'
 import EssayQuestionWidget from './components/EssayQuestionWidget'
+import MultipleChoiceQuestionWidget from './components/MultipleChoiceQuestionWidget'
 
 
 class Home extends React.Component {
@@ -45,7 +46,8 @@ const App = createStackNavigator({
     WidgetList,
     AssignmentWidget,
     ExamWidget,
-    EssayQuestionWidget
+    EssayQuestionWidget,
+    MultipleChoiceQuestionWidget
 },{initialRouteName:'WidgetList'});
 
 export default App;

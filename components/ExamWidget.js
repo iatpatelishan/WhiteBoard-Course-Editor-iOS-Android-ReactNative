@@ -38,7 +38,7 @@ class AssignmentWidget extends Component {
     render() {
         return (
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 15, paddingRight: 15}}>
-                <Text>Hello</Text>
+                <Text>{this.state.examId}</Text>
             </ScrollView>
         )
     }

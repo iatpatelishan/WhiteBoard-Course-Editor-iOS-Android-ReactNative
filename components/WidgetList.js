@@ -80,7 +80,7 @@ class WidgetList extends Component {
                         (widget, index) => {
                             return (<ListItem
                                 onPress={() => this.props.navigation
-                                    .navigate("ExamEditor", {examId: widget.id})}
+                                    .navigate("ExamWidget", {examId: widget.id})}
                                 key={index}
                                 subtitle={widget.description}
                                 title={widget.name}/>);

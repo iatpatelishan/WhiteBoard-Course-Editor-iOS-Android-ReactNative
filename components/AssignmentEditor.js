@@ -4,9 +4,6 @@ import {Text, Button, Divider} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 import WidgetService from "../services/WidgetService";
 import AssignmentService from "../services/AssignmentService";
-var FileInput = require('react-simple-file-input');
-
-
 
 
 class AssignmentEditor extends Component {
@@ -25,6 +22,7 @@ class AssignmentEditor extends Component {
         this.assignmentService = AssignmentService.instance;
         this.updateForm = this.updateForm.bind(this);
         this.fetchAssignment = this.fetchAssignment.bind(this);
+        this.updateAssignment = this.updateAssignment.bind(this);
     }
 
     componentDidMount() {
@@ -40,11 +38,23 @@ class AssignmentEditor extends Component {
                         name: assignment.name,
                         title: assignment.title,
                         description: assignment.description,
-                        points: assignment.points
+                        points: assignment.points,
                     })
                     console.log(this.state)
                 }
             )
+    }
+
+    updateAssignment() {
+        this.assignmentService.updateAssignment(
+            this.state.assignmentId,
+            {
+                'id':this.state.assignmentId,
+                'name':this.state.name,
+                'title':this.state.title,
+                'description':this.state.description,
+                'points':this.state.points
+            })
     }
 
     updateForm(newState) {
@@ -81,7 +91,7 @@ class AssignmentEditor extends Component {
                 </FormValidationMessage>
 
                 <FormLabel>Points</FormLabel>
-                <FormInput style={styles.textInput} onChangeText={
+                <FormInput style={styles.textInput} value={String(this.state.points)} onChangeText={
                     text => this.updateForm({points: text})
                 }/>
                 <FormValidationMessage>
@@ -90,7 +100,8 @@ class AssignmentEditor extends Component {
 
                 <Button backgroundColor="green"
                         color="white"
-                        title="Save"/>
+                        title="Save"
+                onPress={() => this.updateAssignment()}/>
 
                 <Button backgroundColor="red"
                         color="white"

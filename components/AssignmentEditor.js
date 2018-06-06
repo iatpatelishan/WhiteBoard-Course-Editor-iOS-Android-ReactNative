@@ -64,7 +64,6 @@ class AssignmentEditor extends Component {
     render() {
         return (
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 15, paddingRight: 15}}>
-                <Text>{this.state.assignmentId}</Text>
 
                 <FormLabel>Assignment Name</FormLabel>
                 <FormInput style={styles.textInput} value={this.state.name} onChangeText={
@@ -105,7 +104,7 @@ class AssignmentEditor extends Component {
 
                 <Button backgroundColor="red"
                         color="white"
-                        title="Cancel"/>
+                        title="Cancel" onPress={() => this.props.navigation.goBack()}/>
 
                 <Divider style={{backgroundColor: '#7a8291', marginTop: 20, marginBottom: 20}}/>
 

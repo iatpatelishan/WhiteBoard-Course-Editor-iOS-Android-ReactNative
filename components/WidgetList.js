@@ -74,7 +74,6 @@ class WidgetList extends Component {
         return (
             <View style={{flex: 1, backgroundColor: '#f3f3f3'}}>
                 <ScrollView style={{padding: 15}}>
-                    <Text>{this.state.topicId}</Text>
 
                     <Text h1>Exam</Text>
 

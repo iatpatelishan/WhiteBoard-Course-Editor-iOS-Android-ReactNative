@@ -17,8 +17,8 @@ class EssayQuestionWidget extends Component {
             questionId: 1,
             title: '',
             description: '',
-            points:0,
-            instructions:''
+            points: 0,
+            instructions: ''
         }
         this.essayQuestionWidgetService = EssayQuestionWidgetService.instance;
         this.fetchQuestion = this.fetchQuestion.bind(this);
@@ -65,80 +65,85 @@ class EssayQuestionWidget extends Component {
     render() {
         return (
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 5, paddingRight: 5}}>
+                <View style={{marginBottom: 20}}>
+                    <Card>
+                        <FormLabel>Title</FormLabel>
+                        <FormInput style={styles.textInput} value={this.state.title} onChangeText={
+                            text => this.updateForm({title: text})
+                        }/>
+                        <FormValidationMessage>
+                            Title is required
+                        </FormValidationMessage>
 
-                <Card>
-                    <FormLabel>Title</FormLabel>
-                    <FormInput style={styles.textInput} value={this.state.title} onChangeText={
-                        text => this.updateForm({title: text})
-                    }/>
-                    <FormValidationMessage>
-                        Title is required
-                    </FormValidationMessage>
+                        <FormLabel>Points</FormLabel>
+                        <FormInput style={styles.textInput} value={String(this.state.points)} onChangeText={
+                            text => this.updateForm({points: text})
+                        }/>
+                        <FormValidationMessage>
+                            Points is required
+                        </FormValidationMessage>
 
-                    <FormLabel>Points</FormLabel>
-                    <FormInput style={styles.textInput} value={String(this.state.points)} onChangeText={
-                        text => this.updateForm({points: text})
-                    }/>
-                    <FormValidationMessage>
-                        Points is required
-                    </FormValidationMessage>
+                        <FormLabel>Instructions</FormLabel>
+                        <FormInput style={styles.textInput} value={String(this.state.instructions)} onChangeText={
+                            text => this.updateForm({instructions: text})
+                        }/>
+                        <FormValidationMessage>
+                            Instructions is required
+                        </FormValidationMessage>
 
-                    <FormLabel>Instructions</FormLabel>
-                    <FormInput style={styles.textInput} value={String(this.state.instructions)} onChangeText={
-                        text => this.updateForm({instructions: text})
-                    }/>
-                    <FormValidationMessage>
-                        Instructions is required
-                    </FormValidationMessage>
-
-                    <Button backgroundColor="green"
-                            color="white"
-                            title="Save"
-                            onPress={() => {this.updateQuestion(); this.props.navigation.goBack()}}/>
-
-                    <Button backgroundColor="red"
-                            color="white"
-                            title="Cancel" onPress={() => this.props.navigation.goBack()}/>
-                </Card>
-
-                <Divider style={{backgroundColor: '#7a8291', marginTop: 20}}/>
-
-                <Card title="Preview">
-
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
-                        <Text h3 style={{
-                            flex: 1,
-                            justifyContent: 'flex-start',
-                        }}>Question {this.state.questionNo} </Text>
-                        <Text h3 style={{
-                            justifyContent: 'flex-end',
-                            marginLeft: 10
-                        }}>{this.state.points}pts</Text>
-                    </View>
-                    <Text h3>{this.state.title}</Text>
-                    <Text>{this.state.instructions} </Text>
-
-                    <TextInput style={styles.box}
-                        multiline={true}
-                        numberOfLines={5}
-                        placeholder="Student would enter answer here"/>
-
-                    <View style={styles.container}>
-                        <Button style={styles.button}
-                                backgroundColor="red"
+                        <Button backgroundColor="green"
                                 color="white"
-                                title="Cancel"
-                                onPress={() => {this.props.navigation.goBack()}}/>
+                                title="Save"
+                                onPress={() => {
+                                    this.updateQuestion();
+                                    this.props.navigation.goBack()
+                                }}/>
 
-                        <Button style={styles.button}
-                                backgroundColor="blue"
+                        <Button backgroundColor="red"
                                 color="white"
-                                title="Submit"
-                                onPress={() => this.props.navigation.goBack()} />
-                    </View>
+                                title="Cancel" onPress={() => this.props.navigation.goBack()}/>
+                    </Card>
 
-                </Card>
+                    <Divider style={{backgroundColor: '#7a8291', marginTop: 20}}/>
 
+                    <Card title="Preview">
+
+                        <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
+                            <Text h3 style={{
+                                flex: 1,
+                                justifyContent: 'flex-start',
+                            }}>Question {this.state.questionNo} </Text>
+                            <Text h3 style={{
+                                justifyContent: 'flex-end',
+                                marginLeft: 10
+                            }}>{this.state.points}pts</Text>
+                        </View>
+                        <Text h3>{this.state.title}</Text>
+                        <Text>{this.state.instructions} </Text>
+
+                        <TextInput style={styles.box}
+                                   multiline={true}
+                                   numberOfLines={5}
+                                   placeholder="Student would enter answer here"/>
+
+                        <View style={styles.container}>
+                            <Button style={styles.button}
+                                    backgroundColor="red"
+                                    color="white"
+                                    title="Cancel"
+                                    onPress={() => {
+                                        this.props.navigation.goBack()
+                                    }}/>
+
+                            <Button style={styles.button}
+                                    backgroundColor="blue"
+                                    color="white"
+                                    title="Submit"
+                                    onPress={() => this.props.navigation.goBack()}/>
+                        </View>
+
+                    </Card>
+                </View>
             </ScrollView>
         )
     }
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
         borderColor: '#cacbce'
     },
     container: {
-        paddingTop:20,
+        paddingTop: 20,
         flex: 1,
         flexDirection: 'row'
     },

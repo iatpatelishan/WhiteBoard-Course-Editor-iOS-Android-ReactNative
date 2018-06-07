@@ -18,7 +18,7 @@ class TopicList extends Component {
         const courseId = navigation.getParam("courseId")
         const moduleId = navigation.getParam("moduleId")
         const lessonId = navigation.getParam("lessonId")
-        fetch("http:///api/lesson/"+lessonId+"/topic")
+        fetch("http://cs5610-summer1-2018-patel.herokuapp.com/api/lesson/"+lessonId+"/topic")
             .then(response => (response.json()))
             .then(topics => this.setState({topics}))
     }

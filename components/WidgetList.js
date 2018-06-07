@@ -31,7 +31,19 @@ class WidgetList extends Component {
         const moduleId = navigation.getParam("moduleId")
         const lessonId = navigation.getParam("lessonId")
         let topicId = navigation.getParam("topicId")
-        topicId = 87;
+
+
+        this.setState({topicId: topicId, lessonId: lessonId, moduleId: moduleId, courseId: courseId},
+            () => this.fetchWidgets());
+    }
+
+    componentWillReceiveProps(newProps) {
+        const {navigation} = newProps;
+        const courseId = navigation.getParam("courseId")
+        const moduleId = navigation.getParam("moduleId")
+        const lessonId = navigation.getParam("lessonId")
+        let topicId = navigation.getParam("topicId")
+
 
         this.setState({topicId: topicId, lessonId: lessonId, moduleId: moduleId, courseId: courseId},
             () => this.fetchWidgets());
@@ -72,33 +84,33 @@ class WidgetList extends Component {
         return (
             <View style={{flex: 1, backgroundColor: '#f3f3f3'}}>
                 <ScrollView style={{padding: 15}}>
+                    <View style={{marginBottom: 20}}>
+                        <Text h1>Exam</Text>
+                        {examList.map(
+                            (widget, index) => {
+                                return (<ListItem
+                                    leftIcon={<Icon name="times-circle" style={styles.widgetIcon}/>}
+                                    onPress={() => this.props.navigation
+                                        .navigate("ExamWidget", {examId: widget.id})}
+                                    key={index}
+                                    subtitle={widget.description}
+                                    title={widget.name}/>);
+                            })
+                        }
 
-                    <Text h1>Exam</Text>
-
-                    {examList.map(
-                        (widget, index) => {
-                            return (<ListItem
-                                onPress={() => this.props.navigation
-                                    .navigate("ExamWidget", {examId: widget.id})}
-                                key={index}
-                                subtitle={widget.description}
-                                title={widget.name}/>);
-                        })
-                    }
-
-
-                    <Text h1 style={{paddingTop: 20}}>Assignment</Text>
-                    {assignmentList.map(
-                        (widget, index) => {
-                            return (<ListItem
-                                onPress={() => this.props.navigation
-                                    .navigate("AssignmentWidget", {assignmentId: widget.id})}
-                                key={index}
-                                subtitle={widget.description}
-                                title={widget.name}/>);
-                        })
-                    }
-
+                        <Text h1 style={{paddingTop: 20}}>Assignment</Text>
+                        {assignmentList.map(
+                            (widget, index) => {
+                                return (<ListItem
+                                    leftIcon={<Icon name="times-circle" style={styles.widgetIcon} />}
+                                    onPress={() => this.props.navigation
+                                        .navigate("AssignmentWidget", {assignmentId: widget.id})}
+                                    key={index}
+                                    subtitle={widget.description}
+                                    title={widget.name}/>);
+                            })
+                        }
+                    </View>
                 </ScrollView>
                 <ActionButton buttonColor="rgba(231,76,60,1)">
                     <ActionButton.Item buttonColor='#3498db' title="New Exam" onPress={() => {
@@ -123,6 +135,9 @@ const styles = StyleSheet.create({
         height: 22,
         color: 'white',
     },
+    widgetIcon: {
+        marginRight: 10,
+    }
 });
 
 export default WidgetList

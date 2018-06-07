@@ -18,7 +18,7 @@ import FillInTheBlanksQuestionWidget from './components/FillInTheBlanksQuestionW
 
 class Home extends React.Component {
     static navigationOptions = {
-        title: 'Home'
+        title: 'Course Manager'
     }
     constructor(props) {
         super(props)
@@ -26,8 +26,7 @@ class Home extends React.Component {
     render() {
         return(
             <ScrollView>
-                <StatusBar barStyle="light-content"/>
-                <FixedHeader/>
+                <StatusBar barStyle="dark-content"/>
 
                 <Button title="Courses"
                         onPress={() => this.props.navigation
@@ -51,6 +50,6 @@ const App = createStackNavigator({
     MultipleChoiceQuestionWidget,
     TrueOrFalseQuestionWidget,
     FillInTheBlanksQuestionWidget
-},{initialRouteName:'WidgetList'});
+},{initialRouteName:'Home'});
 
 export default App;

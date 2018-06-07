@@ -1,5 +1,5 @@
 let _singleton;
-const CHOICE_QUESTION_WIDGET_API_URL = 'http://192.168.0.13:8080/api/question/choice/QID';
+const CHOICE_QUESTION_WIDGET_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/question/choice/QID';
 
 class MultipleChoiceQuestionWidgetService {
     constructor(singletonToken) {

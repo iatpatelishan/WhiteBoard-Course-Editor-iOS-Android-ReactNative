@@ -71,14 +71,17 @@ class FillInTheBlanksQuestionWidget extends Component {
         let previewList = this.state.variables.split('\n')
             .map((line,i) => {
                 let arr=[];
+                arr.push(<View style={styles.blankPreviewLine}>);
+                let words = line.split(/(?!\(.*)\s(?![^\[]*?\])/g);
 
-                line.split("\\s+(?![^\\[]*\\])").map((seq,ind) => {
+                words.map((seq,ind) => {
                     if(seq.substr(0,1)=='[' && seq.slice(-1)==']'){
                         arr.push(<FormInput key={ind}/>);
                     } else {
                         arr.push(<Text key={ind}>{seq}</Text>);
                     }
                 });
+                    arr.push(</View>);
                 return (arr);
             });
         return (
@@ -193,6 +196,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 15,
         backgroundColor: 'green',
+    },
+    blankPreviewLine: {
+        flex: 1,
+        flexDirection: 'row'
     }
 
 });

@@ -1,8 +1,8 @@
 let _singleton;
-const TOPIC_WIDGET_API_URL = 'http://192.168.0.13:8080/api/topic/TID/widget';
-const TOPIC_WIDGET_SAVE_API_URL = 'http://192.168.0.13:8080/api/topic/TID/savewidget';
-const TOPIC_ASSIGNMENT_WIDGET_CREATE_API_URL = 'http://192.168.0.13:8080/api/topic/TID/assignment';
-const TOPIC_EXAM_WIDGET_CREATE_API_URL = 'http://192.168.0.13:8080/api/topic/TID/exam';
+const TOPIC_WIDGET_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/topic/TID/widget';
+const TOPIC_WIDGET_SAVE_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/topic/TID/savewidget';
+const TOPIC_ASSIGNMENT_WIDGET_CREATE_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/topic/TID/assignment';
+const TOPIC_EXAM_WIDGET_CREATE_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/topic/TID/exam';
 
 
 class WidgetService {

@@ -1,9 +1,9 @@
 let _singleton;
-const EXAM_API_URL = 'http://192.168.0.13:8080/api/exam/EID/question';
-const EXAM_ESSAY_API_URL = 'http://192.168.0.13:8080/api/exam/EID/essay';
-const EXAM_CHOICE_API_URL = 'http://192.168.0.13:8080/api/exam/EID/choice';
-const EXAM_BLANKS_API_URL = 'http://192.168.0.13:8080/api/exam/EID/blanks';
-const EXAM_TRUEFALSE_API_URL = 'http://192.168.0.13:8080/api/exam/EID/truefalse';
+const EXAM_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/exam/EID/question';
+const EXAM_ESSAY_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/exam/EID/essay';
+const EXAM_CHOICE_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/exam/EID/choice';
+const EXAM_BLANKS_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/exam/EID/blanks';
+const EXAM_TRUEFALSE_API_URL = 'http://cs5610-summer1-2018-patel.herokuapp.com/api/exam/EID/truefalse';
 
 class ExamService {
     constructor(singletonToken) {

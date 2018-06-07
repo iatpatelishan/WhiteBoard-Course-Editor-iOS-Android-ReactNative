@@ -70,19 +70,23 @@ class FillInTheBlanksQuestionWidget extends Component {
     render() {
         let previewList = this.state.variables.split('\n')
             .map((line,i) => {
-                let arr=[];
-                arr.push(<View style={styles.blankPreviewLine}>);
-                let words = line.split(/(?!\(.*)\s(?![^\[]*?\])/g);
 
+                let arr=[];
+                let words = line.split(/(?!\(.*)\s(?![^\[]*?\])/g);
                 words.map((seq,ind) => {
                     if(seq.substr(0,1)=='[' && seq.slice(-1)==']'){
-                        arr.push(<FormInput key={ind}/>);
+                        arr.push(<View style={{marginTop:5, marginRight:3, height: 18,
+                            width: 50,
+                            borderWidth: 1,
+                            borderColor: '#cacbce'}} key={ind}><Text> </Text></View>);
                     } else {
-                        arr.push(<Text key={ind}>{seq}</Text>);
+                        arr.push(<Text style={{
+                            marginTop:5, marginBottom:5, marginRight: 3, flexWrap:'wrap'
+                        }} key={ind}>{seq}</Text>);
                     }
                 });
-                    arr.push(</View>);
-                return (arr);
+
+                return React.createElement(View,{key: i, style:styles.blankPreviewLine},arr);
             });
         return (
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 5, paddingRight: 5}}>
@@ -153,9 +157,12 @@ class FillInTheBlanksQuestionWidget extends Component {
                     <Text h3>{this.state.title}</Text>
                     <Text>{this.state.instructions} </Text>
 
-                    <Card>
+
+                    <Text h5 style={{marginTop:20, marginBottom:10, fontWeight: "bold"}}>Fill In The Blanks :-</Text>
+
+                    <View>
                         {previewList}
-                    </Card>
+                    </View>
 
                     <View style={styles.container}>
                         <Button style={styles.button}
@@ -199,7 +206,17 @@ const styles = StyleSheet.create({
     },
     blankPreviewLine: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection:'row',
+        flexWrap: 'wrap'
+    },
+    previewText: {
+        marginTop:5, marginBottom:5, marginRight: 3, flexWrap:'wrap'
+    },
+    previewInput: {
+        height: 20,
+        width: 50,
+        borderWidth: 1,
+        color: '#cacbce',
     }
 
 });

@@ -5,6 +5,7 @@ import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements
 import AssignmentService from "../services/AssignmentService";
 
 
+
 class AssignmentWidget extends Component {
     static navigationOptions = {title: 'Assignment Editor'}
 
@@ -61,6 +62,7 @@ class AssignmentWidget extends Component {
 
     render() {
         return (
+            <View>
             <ScrollView style={{backgroundColor: '#f3f3f3', paddingLeft: 5, paddingRight: 5}}>
 
                 <Card>
@@ -131,13 +133,44 @@ class AssignmentWidget extends Component {
                         placeholder="Student would enter answer here"/>
 
                     <Text style={styles.uploadFile} h4>Upload a file </Text>
-
+                    <View style={{
+                        flexDirection: 'row',
+                        borderWidth: 1,
+                        borderRadius: 5,
+                        borderColor: '#cacbce',
+                        backgroundColor: '#fff',
+                        height:40,
+                        width:'100%',
+                        paddingRight:10,
+                        paddingLeft:7
+                        ,
+                        paddingTop:7,
+                        marginTop:20}}>
+                        <View style={{
+                            borderWidth: 1,
+                            borderRadius: 1,
+                            borderColor: '#cacbce',
+                            backgroundColor: '#fff',
+                            height:25,
+                            width: 107,
+                            paddingRight:10,
+                            paddingLeft:10,
+                            paddingTop:2,
+                        }}>
+                            <Text>Choose a File</Text>
+                        </View>
+                        <View style={{
+                            paddingTop:2,
+                            paddingLeft: 10
+                        }}><Text>No File Chosen</Text></View>
+                    </View>
 
                     <Text style={styles.uploadLink} h4>Submit a Link </Text>
                     <FormInput style={styles.textInput} placeholder="Student would submit link here"/>
                 </Card>
 
             </ScrollView>
+            </View>
         )
     }
 }

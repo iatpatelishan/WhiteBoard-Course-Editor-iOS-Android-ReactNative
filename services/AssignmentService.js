@@ -1,5 +1,5 @@
 let _singleton;
-const ASSIGNMENT_API_URL = 'http://192.168.43.172:8080/api/assignment/AID';
+const ASSIGNMENT_API_URL = 'http://192.168.0.13:8080/api/assignment/AID';
 
 class AssignmentService {
     constructor(singletonToken) {

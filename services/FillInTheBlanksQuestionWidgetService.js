@@ -1,5 +1,5 @@
 let _singleton;
-const BLANKS_QUESTION_WIDGET_API_URL = 'http://192.168.43.172:8080/api/question/choice/QID';
+const BLANKS_QUESTION_WIDGET_API_URL = 'http://192.168.0.13:8080/api/question/blanks/QID';
 
 class FillInTheBlanksQuestionWidgetService {
     constructor(singletonToken) {

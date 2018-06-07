@@ -1,5 +1,5 @@
 let _singleton;
-const TRUEFALSE_QUESTION_WIDGET_API_URL = 'http://192.168.43.172:8080/api/question/truefalse/QID';
+const TRUEFALSE_QUESTION_WIDGET_API_URL = 'http://192.168.0.13:8080/api/question/truefalse/QID';
 
 class TrueOrFalseQuestionWidgetService {
     constructor(singletonToken) {

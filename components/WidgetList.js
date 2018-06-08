@@ -97,7 +97,7 @@ class WidgetList extends Component {
                         {examList.map(
                             (widget, index) => {
                                 return (<ListItem
-                                    leftIcon={<Icon onPress={() => this.deleteWidget(widget.id)} name="times-circle" style={styles.widgetIcon}/>}
+                                    leftIcon={<Icon size={20} onPress={() => this.deleteWidget(widget.id)} name="times-circle" style={styles.widgetIcon}/>}
                                     onPress={() => this.props.navigation
                                         .navigate("ExamWidget", {examId: widget.id})}
                                     key={index}
@@ -110,7 +110,7 @@ class WidgetList extends Component {
                         {assignmentList.map(
                             (widget, index) => {
                                 return (<ListItem
-                                    leftIcon={<Icon onPress={() => this.deleteWidget(widget.id)} name="times-circle" style={styles.widgetIcon} />}
+                                    leftIcon={<Icon size={20} onPress={() => this.deleteWidget(widget.id)} name="times-circle" style={styles.widgetIcon} />}
                                     onPress={() => this.props.navigation
                                         .navigate("AssignmentWidget", {assignmentId: widget.id})}
                                     key={index}

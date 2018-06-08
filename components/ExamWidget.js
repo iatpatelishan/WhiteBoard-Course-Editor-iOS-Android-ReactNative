@@ -50,7 +50,6 @@ class AssignmentWidget extends Component {
             (question, index) => {
                 count++;
 
-
                 let questionTypeText = ''
                 let route = 'Home';
                 let questionIcon = 'list-ul';

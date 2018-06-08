@@ -23,6 +23,7 @@ class WidgetList extends Component {
         this.fetchWidgets = this.fetchWidgets.bind(this);
         this.createWidget = this.createWidget.bind(this);
         this.setModalVisible = this.setModalVisible.bind(this);
+        this.deleteWidget = this.deleteWidget.bind(this);
     }
 
     componentDidMount() {
@@ -67,6 +68,13 @@ class WidgetList extends Component {
         this.setState({widgetModal: visible});
     }
 
+    deleteWidget(widgetId){
+        return this.widgetService.deleteWidget(widgetId)
+            .then(() => {
+                this.fetchWidgets();
+            });
+    }
+
     render() {
         let assignmentList = [];
         let examList = [];
@@ -89,7 +97,7 @@ class WidgetList extends Component {
                         {examList.map(
                             (widget, index) => {
                                 return (<ListItem
-                                    leftIcon={<Icon name="times-circle" style={styles.widgetIcon}/>}
+                                    leftIcon={<Icon onPress={() => this.deleteWidget(widget.id)} name="times-circle" style={styles.widgetIcon}/>}
                                     onPress={() => this.props.navigation
                                         .navigate("ExamWidget", {examId: widget.id})}
                                     key={index}
@@ -102,7 +110,7 @@ class WidgetList extends Component {
                         {assignmentList.map(
                             (widget, index) => {
                                 return (<ListItem
-                                    leftIcon={<Icon name="times-circle" style={styles.widgetIcon} />}
+                                    leftIcon={<Icon onPress={() => this.deleteWidget(widget.id)} name="times-circle" style={styles.widgetIcon} />}
                                     onPress={() => this.props.navigation
                                         .navigate("AssignmentWidget", {assignmentId: widget.id})}
                                     key={index}
